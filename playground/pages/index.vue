@@ -1,6 +1,4 @@
 <script setup>
-import { useAsyncData } from 'nuxt/app'
-
 const axios = useAxios()
 
 const PATH = 'https://jsonplaceholder.typicode.com/posts'

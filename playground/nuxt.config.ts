@@ -1,7 +1,7 @@
-import { defineNuxtConfig } from 'nuxt/config'
-
 export default defineNuxtConfig({
   modules: ['../src/module'],
+
+  compatibilityDate: '2026-01-01',
 
   axios: {
     enableLogger: true,

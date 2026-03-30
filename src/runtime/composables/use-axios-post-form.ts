@@ -14,6 +14,6 @@ import { useAxios } from './use-axios'
  * @example
  * const response = await useAxiosPostForm('/api/resource', { key: 'value' });
  */
-export const useAxiosPostForm = <T = unknown, D = unknown>(url: string, data?: D, config?: NuxtAxiosRequestConfig): Promise<T> => {
+export const useAxiosPostForm = <T = unknown, TData = unknown>(url: string, data?: TData, config?: NuxtAxiosRequestConfig): Promise<T> => {
   return useAxios().postForm(url, data, config)
 }

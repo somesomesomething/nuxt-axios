@@ -14,6 +14,6 @@ import { useAxios } from './use-axios'
  * @example
  * const response = await useAxiosPatchForm('/api/resource/1', { key: 'value' });
  */
-export const useAxiosPatchForm = <T = unknown, D = unknown>(url: string, data?: D, config?: NuxtAxiosRequestConfig): Promise<T> => {
+export const useAxiosPatchForm = <T = unknown, TData = unknown>(url: string, data?: TData, config?: NuxtAxiosRequestConfig): Promise<T> => {
   return useAxios().patchForm(url, data, config)
 }

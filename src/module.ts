@@ -14,7 +14,7 @@ export default defineNuxtModule<NuxtAxiosModuleOptions>({
     version: MODULE_VERSION,
     configKey: MODULE_CONFIG_KEY,
     compatibility: {
-      nuxt: '^3.0.0',
+      nuxt: '>=3.0.0',
     },
   },
 
@@ -30,7 +30,9 @@ export default defineNuxtModule<NuxtAxiosModuleOptions>({
      * @type {string | null}
      */
 
-    const configPath = await findPath(options.configPath)
+    const rootResolver = createResolver(nuxt.options.rootDir)
+
+    const configPath = await findPath(rootResolver.resolve(options.configPath))
 
     if (!configPath) {
       if (options.enableLogger) {

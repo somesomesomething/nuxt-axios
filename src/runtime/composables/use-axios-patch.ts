@@ -14,6 +14,6 @@ import { useAxios } from './use-axios'
  * @example
  * const response = await useAxiosPatch('/api/resource/1', { key: 'value' });
  */
-export const useAxiosPatch = <T = unknown, D = unknown>(url: string, data?: D, config?: NuxtAxiosRequestConfig): Promise<T> => {
+export const useAxiosPatch = <T = unknown, TData = unknown>(url: string, data?: TData, config?: NuxtAxiosRequestConfig): Promise<T> => {
   return useAxios().patch(url, data, config)
 }
