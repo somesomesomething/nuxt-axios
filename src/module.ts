@@ -1,5 +1,6 @@
 import { defineNuxtModule, addPlugin, addImportsDir, findPath, createResolver, useLogger } from '@nuxt/kit'
 import type { Nuxt } from '@nuxt/schema'
+
 import type { NuxtAxiosModuleOptions } from './types'
 
 const MODULE_NAME = '@nuxt-core/axios'

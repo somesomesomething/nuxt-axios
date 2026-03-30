@@ -1,5 +1,6 @@
-import defu from 'defu'
 import axios from 'axios'
+import defu from 'defu'
+
 import type { NuxtAxiosConfigOptions, NuxtAxiosDefaults } from '../../types'
 
 const defaultOptions: NuxtAxiosDefaults = {

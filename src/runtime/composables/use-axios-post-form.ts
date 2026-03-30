@@ -1,4 +1,5 @@
 import type { NuxtAxiosRequestConfig } from '../../types'
+
 import { useAxios } from './use-axios'
 
 /**

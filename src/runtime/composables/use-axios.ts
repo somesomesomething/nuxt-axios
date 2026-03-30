@@ -1,4 +1,5 @@
 import { useNuxtApp } from 'nuxt/app'
+
 import type { NuxtAxiosInstance } from '../../types'
 
 /**

@@ -1,10 +1,7 @@
 import { defineNuxtPlugin } from 'nuxt/app'
+
 import { createAxios } from './core/create-axios'
 
-/**
- * Import the Axios configuration function from the root folder.
- * @module
- */
 import axiosConfig from '#nuxt-axios'
 
 /**
