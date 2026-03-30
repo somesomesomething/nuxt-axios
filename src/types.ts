@@ -19,4 +19,4 @@ export interface NuxtAxiosConfigOptions {
 
 export type NuxtAxiosInstance = AxiosInstance
 
-export type NuxtAxiosRequestConfig = AxiosRequestConfig
+export type NuxtAxiosRequestConfig<D = unknown> = AxiosRequestConfig<D>

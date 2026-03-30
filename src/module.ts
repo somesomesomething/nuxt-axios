@@ -1,4 +1,4 @@
-import { defineNuxtModule, addPlugin, addImportsDir, findPath, createResolver, useLogger } from '@nuxt/kit'
+import { defineNuxtModule, addPlugin, addImports, findPath, createResolver, useLogger } from '@nuxt/kit'
 import type { Nuxt } from '@nuxt/schema'
 
 import type { NuxtAxiosModuleOptions } from './types'
@@ -65,7 +65,23 @@ export default defineNuxtModule<NuxtAxiosModuleOptions>({
      * allowing usage of `useAxios`, `useAxiosGet`, etc. without explicit imports.
      */
     if (options.enableAutoImport) {
-      addImportsDir(resolve(runtimePath, './composables'))
+      const composablesPath = resolve(runtimePath, './composables')
+
+      addImports([
+        { name: 'useAxios', from: resolve(composablesPath, './use-axios') },
+        { name: 'useAxiosConfig', from: resolve(composablesPath, './use-axios-config') },
+        { name: 'useAxiosGet', from: resolve(composablesPath, './use-axios-get') },
+        { name: 'useAxiosPost', from: resolve(composablesPath, './use-axios-post') },
+        { name: 'useAxiosPut', from: resolve(composablesPath, './use-axios-put') },
+        { name: 'useAxiosDelete', from: resolve(composablesPath, './use-axios-delete') },
+        { name: 'useAxiosPatch', from: resolve(composablesPath, './use-axios-patch') },
+        { name: 'useAxiosHead', from: resolve(composablesPath, './use-axios-head') },
+        { name: 'useAxiosOptions', from: resolve(composablesPath, './use-axios-options') },
+        { name: 'useAxiosRequest', from: resolve(composablesPath, './use-axios-request') },
+        { name: 'useAxiosPostForm', from: resolve(composablesPath, './use-axios-post-form') },
+        { name: 'useAxiosPutForm', from: resolve(composablesPath, './use-axios-put-form') },
+        { name: 'useAxiosPatchForm', from: resolve(composablesPath, './use-axios-patch-form') },
+      ])
     }
 
     if (options.enableLogger) {
