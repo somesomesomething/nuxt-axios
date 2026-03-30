@@ -4,6 +4,9 @@
     "module": "esnext",
     "moduleResolution": "Bundler",
     "strict": true,
+    "paths": {
+      "#nuxt-axios": ["./src/runtime/types.d.ts"]
+    }
   },
 
   "exclude": [
