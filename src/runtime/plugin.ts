@@ -5,10 +5,8 @@ import { createAxios } from './core/create-axios'
 import axiosConfig from '#nuxt-axios'
 
 /**
- * Nuxt plugin to initialize Axios with the provided configuration.
- * @function
- * @returns {object} The plugin object containing the Axios instance.
- * @throws {TypeError} Throws an error if the Axios configuration is not a function.
+ * Nuxt plugin that creates and provides the Axios instance
+ * to the application via `useNuxtApp().$axios`.
  */
 export default defineNuxtPlugin(() => {
   return {

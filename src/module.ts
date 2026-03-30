@@ -27,10 +27,8 @@ export default defineNuxtModule<NuxtAxiosModuleOptions>({
 
   async setup(options: NuxtAxiosModuleOptions, nuxt: Nuxt) {
     /**
-     * Finds the path to the configuration file.
-     * @type {string | null}
+     * Resolves the path to the configuration file relative to the project root.
      */
-
     const rootResolver = createResolver(nuxt.options.rootDir)
 
     const configPath = await findPath(rootResolver.resolve(options.configPath))
@@ -43,38 +41,31 @@ export default defineNuxtModule<NuxtAxiosModuleOptions>({
       return
     }
 
+    /**
+     * Registers the configuration file as a module alias,
+     * making it available via `#nuxt-axios` in runtime code.
+     */
     nuxt.options.alias['#nuxt-axios'] = configPath
 
     /**
-     * Resolves the runtime path for the module.
-     * @type {Function}
+     * Resolves paths relative to the module's source directory.
      */
-
     const { resolve } = createResolver(import.meta.url)
 
     const runtimePath = resolve('./runtime')
 
     /**
-     * Resolves the path to the Axios plugin.
-     * @type {string}
+     * Registers the Axios plugin that initializes the instance
+     * and provides it to the Nuxt app via `$axios`.
      */
-
-    const axiosPlugin = resolve(runtimePath, './plugin.ts')
-
-    addPlugin(axiosPlugin)
+    addPlugin(resolve(runtimePath, './plugin.ts'))
 
     /**
-     * If auto-import is enabled, adds the composable directory.
+     * Registers composables for auto-import when enabled,
+     * allowing usage of `useAxios`, `useAxiosGet`, etc. without explicit imports.
      */
-
     if (options.enableAutoImport) {
-      const composables = resolve(runtimePath, './composables')
-
-      /**
-       * Adds the imports directory for composables.
-       */
-
-      addImportsDir(composables)
+      addImportsDir(resolve(runtimePath, './composables'))
     }
 
     if (options.enableLogger) {
